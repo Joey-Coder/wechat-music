@@ -1,18 +1,33 @@
 // pages/index/index.js
+
+import request from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    banners: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: async function (options) {
+    // 请求banners
+    const { banners, code } = await request(
+      '/banner', {
+      type: 1
+    },
+      'GET'
+    )
+    if (code === 200) {
+      console.log('获取banners成功')
+      this.setData({
+        banners: banners
+      })
+    }
+    // console.log(banners, code)
   },
 
   /**

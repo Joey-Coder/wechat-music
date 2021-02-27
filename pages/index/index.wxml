@@ -2,14 +2,8 @@
 <view class="index-container">
   <!-- 轮播图 -->
   <swiper indicator-dots="true" indicator-color="white" indicator-active-color="red" class="banners" autoplay="true">
-    <swiper-item>
-      <image src="/static/images/zzf.jpeg" class="banner"></image>
-    </swiper-item>
-    <swiper-item>
-      <image src="/static/images/zzf.jpeg" class="banner"></image>
-    </swiper-item>
-    <swiper-item>
-      <image src="/static/images/zzf.jpeg" class="banner"></image>
+    <swiper-item wx:for="{{banners}}" wx:key="bannerId">
+      <image src="{{item.pic}}" class="banner"></image>
     </swiper-item>
   </swiper>
   <!-- 导航栏 -->

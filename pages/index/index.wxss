@@ -40,24 +40,25 @@
 /* 推荐歌曲 */
 .recommend-container {
   padding: 20rpx;
+  margin-top: 20rpx;
 }
 
 .recommend-container .title {
   display: block;
   color: #666666;
-  padding-bottom: 20rpx;
+  padding-bottom: 10rpx;
 }
 
 .recommend-container .header {
-  padding-bottom: 20rpx;
+  padding-bottom: 16rpx;
 }
 
 .recommend-container .more {
   float: right;
-  font-size: 24rpx;
+  font-size: 20rpx;
   border: 2rpx solid #666666;
   padding: 6rpx 14rpx;
-  border-radius: 10rpx;
+  border-radius: 20rpx;
 }
 
 .recommend-container .recommend-scroller {
