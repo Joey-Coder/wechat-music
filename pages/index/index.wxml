@@ -39,25 +39,9 @@
       </view>
     </view>
     <scroll-view class="recommend-scroller" enable-flex="true" scroll-x="true">
-      <view class="recommend-item">
-        <image src="/static/images/zzf.jpeg"></image>
-        <text>一去二三里，烟村四五家，亭台六七座，八九十枝花</text>
-      </view>
-      <view class="recommend-item">
-        <image src="/static/images/zzf.jpeg"></image>
-        <text>一去二三里，烟村四五家，亭台六七座，八九十枝花</text>
-      </view>
-      <view class="recommend-item">
-        <image src="/static/images/zzf.jpeg"></image>
-        <text>一去二三里，烟村四五家，亭台六七座，八九十枝花</text>
-      </view>
-      <view class="recommend-item">
-        <image src="/static/images/zzf.jpeg"></image>
-        <text>一去二三里，烟村四五家，亭台六七座，八九十枝花</text>
-      </view>
-      <view class="recommend-item">
-        <image src="/static/images/zzf.jpeg"></image>
-        <text>一去二三里，烟村四五家，亭台六七座，八九十枝花</text>
+      <view class="recommend-item" wx:for="{{recommend}}" wx:key="id">
+        <image src="{{item.picUrl}}"></image>
+        <text>{{item.name}}</text>
       </view>
     </scroll-view>
   </view>

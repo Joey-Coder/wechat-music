@@ -7,27 +7,51 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banners: {}
+    banners: {},
+    recommend: {}
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 获取海报封面
    */
-  onLoad: async function (options) {
-    // 请求banners
+  async getBanners() {
     const { banners, code } = await request(
-      '/banner', {
-      type: 1
-    },
+      '/banner',
+      {
+        type: 1
+      },
       'GET'
     )
     if (code === 200) {
-      console.log('获取banners成功')
+      console.log('获取封面海报成功')
       this.setData({
         banners: banners
       })
     }
-    // console.log(banners, code)
+  },
+
+  async getRecommend() {
+    const { code, result } = await request(
+      '/personalized',
+      { limit: 10 },
+      'GET'
+    )
+    if (code === 200) {
+      console.log('获取推荐歌单成功')
+      this.setData({
+        recommend: result
+      })
+    }
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    // 请求banners
+    this.getBanners()
+    // 请求推荐歌单
+    this.getRecommend()
+
   },
 
   /**
