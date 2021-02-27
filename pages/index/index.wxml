@@ -1,0 +1,38 @@
+<!--pages/index/index.wxml-->
+<view class="index-container">
+  <!-- 轮播图 -->
+  <swiper indicator-dots="true" indicator-color="white" indicator-active-color="red" class="banners" autoplay="true">
+    <swiper-item>
+      <image src="/static/images/zzf.jpeg" class="banner"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/static/images/zzf.jpeg" class="banner"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/static/images/zzf.jpeg" class="banner"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 导航栏 -->
+  <view class="nav-container">
+    <view class="nav-item">
+      <view class="iconfont icon-tuijian"></view>
+      <text>每日推荐</text>
+    </view>
+    <view class="nav-item">
+      <view class="iconfont icon-gedan"></view>
+      <text>歌单</text>
+    </view>
+    <view class="nav-item">
+      <view class="iconfont icon-paixingbang"></view>
+      <text>排行榜</text>
+    </view>
+    <view class="nav-item">
+      <view class="iconfont icon-diantai"></view>
+      <text>电台</text>
+    </view>
+    <view class="nav-item">
+      <view class="iconfont icon-zhibobofangshexiangjitianxianxianxing"></view>
+      <text>直播</text>
+    </view>
+  </view>
+</view>
