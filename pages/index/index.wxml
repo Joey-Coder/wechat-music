@@ -35,4 +35,36 @@
       <text>直播</text>
     </view>
   </view>
+  <!-- 推荐歌曲 -->
+  <view class="recommend-container">
+    <view class="header">
+      <text class="title">推荐歌曲</text>
+      <view>
+        <text>为您精心推荐</text>
+        <text class="more">查看更多</text>
+      </view>
+    </view>
+    <scroll-view class="recommend-scroller" enable-flex="true" scroll-x="true">
+      <view class="recommend-item">
+        <image src="/static/images/zzf.jpeg"></image>
+        <text>一去二三里，烟村四五家，亭台六七座，八九十枝花</text>
+      </view>
+      <view class="recommend-item">
+        <image src="/static/images/zzf.jpeg"></image>
+        <text>一去二三里，烟村四五家，亭台六七座，八九十枝花</text>
+      </view>
+      <view class="recommend-item">
+        <image src="/static/images/zzf.jpeg"></image>
+        <text>一去二三里，烟村四五家，亭台六七座，八九十枝花</text>
+      </view>
+      <view class="recommend-item">
+        <image src="/static/images/zzf.jpeg"></image>
+        <text>一去二三里，烟村四五家，亭台六七座，八九十枝花</text>
+      </view>
+      <view class="recommend-item">
+        <image src="/static/images/zzf.jpeg"></image>
+        <text>一去二三里，烟村四五家，亭台六七座，八九十枝花</text>
+      </view>
+    </scroll-view>
+  </view>
 </view>
