@@ -1,0 +1,8 @@
+<!--components/aaa/aaa.wxml-->
+<view class="header">
+  <text class="title">{{nav}}</text>
+  <view>
+    <text>{{title}}</text>
+    <text class="more">查看更多</text>
+  </view>
+</view>

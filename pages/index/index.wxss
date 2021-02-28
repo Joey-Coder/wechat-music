@@ -63,6 +63,7 @@
 
 .recommend-container .recommend-scroller {
   display: flex;
+  height: 300rpx;
 }
 
 .recommend-container .recommend-scroller .recommend-item {
@@ -89,6 +90,9 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
+}
 
-
+.top-list {
+  padding: 20rpx;
+  margin-top: 20rpx;
 }

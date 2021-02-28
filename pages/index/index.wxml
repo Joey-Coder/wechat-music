@@ -45,4 +45,8 @@
       </view>
     </scroll-view>
   </view>
+  <!-- 排行榜 -->
+  <view class="top-list">
+    <NavHeader nav="排行榜" title="热歌风向标"></NavHeader>
+  </view>
 </view>
