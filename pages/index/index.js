@@ -7,8 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 海报
     banners: {},
-    recommend: {}
+    // 推荐
+    recommend: {},
+    // 排行榜
+    topList: []
   },
 
   /**
@@ -43,14 +47,43 @@ Page({
       })
     }
   },
+
+  async getTopList() {
+    let list = []
+    for (let i = 0; i < 5; i++) {
+      const { code, playlist } = await request(
+        '/top/list',
+        { idx: i },
+        'GET'
+      )
+      if (code === 200) {
+        console.log(`获取排行榜${i}成功`)
+        let temp = {
+          name: playlist.name,
+          songs: playlist.tracks.slice(0, 3)
+        }
+        list.push(temp)
+        this.setData({
+          topList: list
+        })
+      }
+      else {
+        console.log('获取排行榜失败')
+      }
+      // this.data.topList.push(temp)
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 请求banners
-    this.getBanners()
     // 请求推荐歌单
     this.getRecommend()
+    // 请求banners
+    this.getBanners()
+    // 请求排行榜
+    this.getTopList()
 
   },
 

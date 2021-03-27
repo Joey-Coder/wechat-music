@@ -96,3 +96,33 @@
   padding: 20rpx;
   margin-top: 20rpx;
 }
+
+.top-list .swiperWrapper {
+  height: 500rpx;
+}
+
+.swiperWrapper .swiperItem {
+  padding: 20rpx 0;
+  background-color: #fafafa;
+  border-radius: 10rpx;
+  /* width: 95%; */
+  margin-right: 20rpx;
+}
+.swiperItem .title {
+  margin-bottom: 20rpx;
+}
+
+.swiperItem .songItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+ .songItem image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+}
+.songItem .count {
+  padding: 0 40rpx;
+}

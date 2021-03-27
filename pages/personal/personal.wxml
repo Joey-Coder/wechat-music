@@ -1,0 +1,40 @@
+<!--pages/personal/personal.wxml-->
+<view class="personalContainer">
+  <view class="userSection"></view>
+  <view class="coverSeciton" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove"
+    bindtouchend="handleTouchEnd" style="transform: {{translateY}}; transition: {{transition}}">
+    <view class="userToolbar">
+      <view class="item">
+        <view class="iconfont icon-message"></view>
+        <text>我的消息</text>
+      </view>
+      <view class="item">
+        <view class="iconfont icon-Friends"></view>
+        <text>我的好友</text>
+      </view>
+      <view class="item">
+        <view class="iconfont icon-user"></view>
+        <text>个人主页</text>
+      </view>
+      <view class="item">
+        <view class="iconfont icon-clothes"></view>
+        <text>个性装扮</text>
+      </view>
+    </view>
+    <view class="recent">
+      <text>最近播放</text>
+    </view>
+    <view class="myMusic">
+      <text>我的音乐</text>
+      <view class="iconfont icon-right"></view>
+    </view>
+    <view class="myStart">
+      <text>我的收藏</text>
+      <view class="iconfont icon-right"></view>
+    </view>
+    <view class="myRadio">
+      <text>我的电台</text>
+      <view class="iconfont icon-right"></view>
+    </view>
+  </view>
+</view>
