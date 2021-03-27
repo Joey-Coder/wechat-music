@@ -8,8 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    translateY : "translateY(0)",
-    transition: 'all 1s linear'
+    translateY: "translateY(0)",
+    transition: 'all 1s linear',
+    userInfo: {}
   },
 
   // 获取鼠标点击时的坐标
@@ -22,9 +23,9 @@ Page({
   },
   handleTouchMove(event) {
     moveY = event.touches[0].clientY
-    moveDistance = moveY- startY
+    moveDistance = moveY - startY
     console.log(moveDistance)
-    if (moveDistance < 0 ) {
+    if (moveDistance < 0) {
       moveDistance = 0
     }
     if (moveDistance > 80) {
@@ -40,11 +41,24 @@ Page({
       translateY: 'translate(0)'
     })
   },
+  // 点击跳转到登录页面
+  handleLogin() {
+    if (!this.data.userInfo.nickname) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const userInfo = wx.getStorageSync('userInfo')
+    if (userInfo.nickname) {
+      this.setData({
+        userInfo: userInfo
+      })
+    }
   },
 
   /**

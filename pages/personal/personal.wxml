@@ -2,47 +2,49 @@
 <view class="personalContainer">
   <view class="userSection">
     <image src="/static/images/background1.png"></image>
-    <view class="loginWrapper">
+    <view class="loginWrapper" bindtap="handleLogin">
       <view class="loginIcon">
-        <view class="iconfont icon-user"></view>
+        <view class="iconfont icon-user" wx:if="{{!userInfo.avatarUrl}}"></view>
+        <image src="{{userInfo.avatarUrl}}" wx:else> </image>
+        <!-- <image src="https://p4.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg"> </image> -->
       </view>
-      <text class="name">游客</text>
+        <text class="name">{{ userInfo.nickname ? userInfo.nickname : "请登录"}}</text>
+      </view>
+    </view>
+    <view class="coverSeciton" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove"
+      bindtouchend="handleTouchEnd" style="transform: {{translateY}}; transition: {{transition}}">
+      <view class="userToolbar">
+        <view class="item">
+          <view class="iconfont icon-message"></view>
+          <text>我的消息</text>
+        </view>
+        <view class="item">
+          <view class="iconfont icon-Friends"></view>
+          <text>我的好友</text>
+        </view>
+        <view class="item">
+          <view class="iconfont icon-user"></view>
+          <text>个人主页</text>
+        </view>
+        <view class="item">
+          <view class="iconfont icon-clothes"></view>
+          <text>个性装扮</text>
+        </view>
+      </view>
+      <view class="recent">
+        <text>最近播放</text>
+      </view>
+      <view class="myMusic">
+        <text>我的音乐</text>
+        <view class="iconfont icon-right"></view>
+      </view>
+      <view class="myStart">
+        <text>我的收藏</text>
+        <view class="iconfont icon-right"></view>
+      </view>
+      <view class="myRadio">
+        <text>我的电台</text>
+        <view class="iconfont icon-right"></view>
+      </view>
     </view>
   </view>
-  <view class="coverSeciton" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove"
-    bindtouchend="handleTouchEnd" style="transform: {{translateY}}; transition: {{transition}}">
-    <view class="userToolbar">
-      <view class="item">
-        <view class="iconfont icon-message"></view>
-        <text>我的消息</text>
-      </view>
-      <view class="item">
-        <view class="iconfont icon-Friends"></view>
-        <text>我的好友</text>
-      </view>
-      <view class="item">
-        <view class="iconfont icon-user"></view>
-        <text>个人主页</text>
-      </view>
-      <view class="item">
-        <view class="iconfont icon-clothes"></view>
-        <text>个性装扮</text>
-      </view>
-    </view>
-    <view class="recent">
-      <text>最近播放</text>
-    </view>
-    <view class="myMusic">
-      <text>我的音乐</text>
-      <view class="iconfont icon-right"></view>
-    </view>
-    <view class="myStart">
-      <text>我的收藏</text>
-      <view class="iconfont icon-right"></view>
-    </view>
-    <view class="myRadio">
-      <text>我的电台</text>
-      <view class="iconfont icon-right"></view>
-    </view>
-  </view>
-</view>

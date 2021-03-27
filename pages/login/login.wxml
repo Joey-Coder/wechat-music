@@ -4,13 +4,13 @@
     <text>欢迎回来</text>
   </view>
   <view class="form">
-    <input class="username" type="text" value="{{userName}}" placeholder="输入手机号" />
-    <input class="password" type="text" value="{{password}}" password="true" placeholder="输入密码" />
-    <button>登录</button>
+    <input id="userName" class="username" type="number" placeholder="输入手机号" bindinput="handleInput" />
+    <input id="password" class="password" type="text" password="true" placeholder="输入密码" bindinput="handleInput" />
+    <button bindtap="handleLogin">登录</button>
     <a href="javaScript:void(0)">忘记密码?</a>
   </view>
   <view class="create">
     <text>还没有账号?</text>
-    <a href="javaScript:void(0)">马上注册</a> 
+    <a href="javaScript:void(0)">马上注册</a>
   </view>
 </view>

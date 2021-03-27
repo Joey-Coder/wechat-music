@@ -26,7 +26,7 @@
   z-index: 10;
   width: 90vw;
   border-radius: 0 20rpx 20rpx 0;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .loginWrapper .loginIcon {
@@ -47,6 +47,12 @@
   font-size: 70rpx;
   color: #ffffff;
 }
+
+.loginIcon image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
 .loginWrapper .name {
   color: #fff
 }
