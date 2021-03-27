@@ -1,1 +1,72 @@
 /* pages/login/login.wxss */
+.loginContainer {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+
+.title {
+  padding: 100rpx
+}
+
+.title text {
+  position: relative;
+  font-size: 46rpx;
+  color: #666666;
+  font-weight: 600;
+}
+
+.title::before {
+  content: 'Login';
+  position: absolute;
+  top: -50rpx;
+  left: 0;
+  font-size: 200rpx;
+  z-index: -1;
+  color: #fafafa
+}
+
+.loginContainer .form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.form .username,
+.form .password {
+  width: 80%;
+  height: 100rpx;
+  margin-bottom: 30rpx;
+  padding-left: 20rpx;
+  background-color: #f4f4f4;
+  border-radius: 10rpx;
+}
+
+.form button {
+  width: 80% !important;
+  background-color: #d43d33;
+  margin: 20rpx 0 30rpx;
+  color: #ffffff;
+}
+
+.form a {
+  font-size: 26rpx;
+  color: skyblue
+}
+
+.create {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: baseline;
+  bottom: 50rpx
+}
+
+.create a {
+  padding-left: 10rpx;
+  font-size: 26rpx;
+  color: skyblue;
+}
