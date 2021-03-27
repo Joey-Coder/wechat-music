@@ -9,10 +9,53 @@
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: #b9d4fc;
+  /* background-color: #b9d4fc; */
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.userSection .loginWrapper {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 10rpx 0 10rpx 40rpx;
+  top: 10%;
+  /* left: 40rpx; */
+  z-index: 10;
+  width: 90vw;
+  border-radius: 0 20rpx 20rpx 0;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.loginWrapper .loginIcon {
+  box-sizing: border-box;
+  margin-right: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rgba(3, 3, 3, 0.1);
+  /* background-color: #d43c33; */
+  border-radius: 50rpx;
+  border: 2px solid #ffffff;
+  text-align: center;
+  line-height: 100rpx;
+
+}
+
+.loginIcon .iconfont {
+  font-size: 70rpx;
+  color: #ffffff;
+}
+.loginWrapper .name {
+  color: #fff
+}
+
+.userSection image {
+  object-fit: cover;
+  object-position: top center;
+  width: 100vw;
+  /* height: 100vh; */
 }
 
 .coverSeciton {
@@ -20,6 +63,7 @@
   position: absolute;
   background-color: #fafafa;
   padding: 30rpx;
+  border-radius: 5% 5% 0 0;
   width: 100vw;
   left: 0;
   top: 30vh;

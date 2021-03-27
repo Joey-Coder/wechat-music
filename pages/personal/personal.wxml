@@ -1,6 +1,14 @@
 <!--pages/personal/personal.wxml-->
 <view class="personalContainer">
-  <view class="userSection"></view>
+  <view class="userSection">
+    <image src="/static/images/background1.png"></image>
+    <view class="loginWrapper">
+      <view class="loginIcon">
+        <view class="iconfont icon-user"></view>
+      </view>
+      <text class="name">游客</text>
+    </view>
+  </view>
   <view class="coverSeciton" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove"
     bindtouchend="handleTouchEnd" style="transform: {{translateY}}; transition: {{transition}}">
     <view class="userToolbar">
