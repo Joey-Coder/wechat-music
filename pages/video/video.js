@@ -49,6 +49,9 @@ Page({
       this.setData({
         videoList: videoList
       })
+      wx.hideLoading({
+        success: (res) => {},
+      })
     }
   },
   /**
@@ -65,18 +68,10 @@ Page({
     })
     this.setData({
       activeId: e.target.dataset.id,
-      videoList: [{}]
+      videoList: [{}],
+      videoId: null
     })
     this.getVideoList(this.data.activeId)
-    if (this.data.videoList !== [{}]) {
-      wx.hideLoading({
-        success: (res) => {
-          // wx.showToast({
-          //   title: '切换成功',
-          // })
-        },
-      })
-    }
   },
 
   /**

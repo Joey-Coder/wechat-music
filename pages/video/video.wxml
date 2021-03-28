@@ -16,7 +16,7 @@
   <!-- 视频区域 -->
   <scroll-view class="videoArea" scroll-y wx:if="{{videoList.length}}">
     <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
-      <video wx:if="{{videoId == item.data.vid}}" class="common" src="{{item.data.urlInfo.url}}"
+      <video wx:if="{{videoId === item.data.vid}}" class="common" src="{{item.data.urlInfo.url}}"
         poster="{{item.data.coverUrl}}" autoplay></video>
       <image wx:else class="common" src="{{item.data.coverUrl}}" id="{{item.data.vid}}" bindtap="handlePlay"></image>
 
