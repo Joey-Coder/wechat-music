@@ -1,4 +1,5 @@
 // pages/personal/personal.js
+import request from '../../utils/request'
 var startY = 0
 var moveY = 0
 var moveDistance = 0
@@ -10,7 +11,8 @@ Page({
   data: {
     translateY: "translateY(0)",
     transition: 'all 1s linear',
-    userInfo: {}
+    userInfo: {},
+    recentList: []
   },
 
   // 获取鼠标点击时的坐标
@@ -47,6 +49,32 @@ Page({
       wx.navigateTo({
         url: '/pages/login/login',
       })
+
+    }
+  },
+  /**
+   * 获取最近播放表单
+   * @param {String} id 
+   */
+  async getRecentList(id) {
+    const { allData, code } = await request(
+      '/user/record',
+      {
+        uid: id,
+        type: 0
+      },
+      'GET',
+    )
+    if (code === 200) {
+      let temp = allData.slice(0, 8).map(
+        (item, index) => {
+          item.id = index
+          return item
+        }
+      )
+      this.setData({
+        recentList: temp
+      })
     }
   },
   /**
@@ -58,6 +86,8 @@ Page({
       this.setData({
         userInfo: userInfo
       })
+      // 获取最近播放表单
+      this.getRecentList(this.data.userInfo.userId)
     }
   },
 

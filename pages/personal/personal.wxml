@@ -32,7 +32,12 @@
         </view>
       </view>
       <view class="recent">
-        <text>最近播放</text>
+        <view>最近播放</view>
+        <scroll-view scroll-x="true" enable-flex class="scrollArea">
+          <view class="recentItem" wx:for="{{recentList}}" wx:key="id"  >
+            <image src="{{item.song.al.picUrl}}"></image>
+          </view>
+        </scroll-view>
       </view>
       <view class="myMusic">
         <text>我的音乐</text>
