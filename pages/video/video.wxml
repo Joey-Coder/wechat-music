@@ -6,17 +6,21 @@
     <image src="/static/images/xiaochengxu.png"></image>
   </view>
   <!-- 视频导航 -->
-  <scroll-view class="nav" enable-flex="true" scroll-x="true">
+  <scroll-view scroll-into-view="{{'scrollId-' + activeId}}" scroll-with-animation="true" class="nav" enable-flex="true"
+    scroll-x="true">
     <view class="navItem {{activeId === item.id ? 'active': ''}}" wx:for="{{navList}}" wx:key="id" data-id="{{item.id}}"
-      bindtap="setActiveId">
+      id="{{'scrollId-' + item.id}}" bindtap="setActiveId">
       {{item.name}}
     </view>
   </scroll-view>
   <!-- 视频区域 -->
-  <scroll-view class="videoArea" scroll-y="">
+  <scroll-view class="videoArea" scroll-y="" wx:if="{{videoList.length}}">
     <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
       <video class="video" src="{{item.data.urlInfo.url}}"></video>
       <view class="title">{{item.data.title}}</view>
     </view>
   </scroll-view>
+  <view class="noVideo" wx:else>
+    <text>抱歉，暂时没有视频</text>
+  </view>
 </view>

@@ -8,7 +8,7 @@ Page({
   data: {
     navList: [],
     activeId: null,
-    videoList: []
+    videoList: [{}]
   },
 
 
@@ -51,6 +51,10 @@ Page({
     }
   },
   setActiveId(e) {
+    wx.showToast({
+      title: '切换中',
+      icon: 'loading'
+    })
     this.setData({
       activeId: e.target.dataset.id
     })
