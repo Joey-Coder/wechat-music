@@ -40,7 +40,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.14.0",
+  "libVersion": "2.15.0",
   "appid": "wxe9b2c3f08ebec61b",
   "projectname": "wechat-music",
   "debugOptions": {

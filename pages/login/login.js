@@ -58,7 +58,10 @@ Page({
         phone: this.data.userName,
         password: this.data.password
       },
-      'GET'
+      'GET',
+      {
+        isLogin: true
+      }
     )
     if (code === 200) {
       wx.showToast({

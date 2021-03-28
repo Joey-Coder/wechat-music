@@ -33,7 +33,7 @@
       </view>
       <view class="recent">
         <view>最近播放</view>
-        <scroll-view scroll-x="true" enable-flex class="scrollArea">
+        <scroll-view scroll-x="true" enable-flex class="scrollArea" wx:if="{{recentList.length > 0}}">
           <view class="recentItem" wx:for="{{recentList}}" wx:key="id"  >
             <image src="{{item.song.al.picUrl}}"></image>
           </view>

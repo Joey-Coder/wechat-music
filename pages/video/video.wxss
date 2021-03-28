@@ -1,1 +1,69 @@
 /* pages/video/video.wxss */
+.videoContainer {
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fcfcfc;
+  padding: 10rpx
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.header .search {
+  flex: 1;
+  border: 1px solid #eeeeee;
+  margin: 0 20rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #d43c33
+}
+
+.nav {
+  display: flex;
+  white-space: nowrap;
+  height: 60rpx;
+  margin-top: 20rpx;
+}
+
+.nav .navItem {
+  /* background-color: #eee; */
+  padding: 0 5rpx;
+  margin: 0 20rpx;
+  /* line-height: 60rpx; */
+}
+
+.nav .active {
+  border-bottom: 2px solid #d43c33;
+}
+
+.videoArea {
+  margin-top: 10rpx;
+}
+.videoArea .videoItem {
+  box-sizing: border-box;
+  margin-top: 30rpx;
+}
+
+.videoItem .title {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 20rpx 10rpx;
+  border-bottom: 2rpx solid #eeeeee
+} 
+
+.videoItem .video {
+  width: 100%;
+  border-radius: 10rpx;
+}
