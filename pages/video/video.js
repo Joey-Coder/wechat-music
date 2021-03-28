@@ -8,7 +8,8 @@ Page({
   data: {
     navList: [],
     activeId: null,
-    videoList: [{}]
+    videoList: [{}],
+    videoId: null
   },
 
 
@@ -41,7 +42,7 @@ Page({
       { requireLogin: true }
     )
     if (code === 200) {
-      let videoList = datas.map((item, index)=>{
+      let videoList = datas.map((item, index) => {
         item.id = index
         return item
       })
@@ -50,16 +51,47 @@ Page({
       })
     }
   },
+  /**
+   * 记录当前标签，并获取标签视频
+   * @param {Object} e 
+   */
   setActiveId(e) {
-    wx.showToast({
+    // wx.showToast({
+    //   title: '切换中',
+    //   icon: 'loading'
+    // })
+    wx.showLoading({
       title: '切换中',
-      icon: 'loading'
     })
     this.setData({
-      activeId: e.target.dataset.id
+      activeId: e.target.dataset.id,
+      videoList: [{}]
     })
     this.getVideoList(this.data.activeId)
+    if (this.data.videoList !== [{}]) {
+      wx.hideLoading({
+        success: (res) => {
+          // wx.showToast({
+          //   title: '切换成功',
+          // })
+        },
+      })
+    }
   },
+
+  /**
+   * 监听视频播放，解决多个视频同时播放问题
+   */
+  handlePlay(e) {
+    let vid = e.target.id
+    // this.lastId !== vid && this.videoContext && this.videoContext.pause()
+    this.setData({
+      videoId: vid
+    })
+    // this.videoContext = wx.createVideoContext(this.data.videoId)
+    // this.videoContext.play()
+  },
+
 
   /**
 * 生命周期函数--监听页面加载

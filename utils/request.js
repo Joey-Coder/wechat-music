@@ -18,6 +18,7 @@ export default (url, data = {}, method = "GET", meta = {}) => {
       header: header,
       success: (res) => {
         // 如果是登录请求，存储cookie
+        // console.log(res)
         if (meta.isLogin) {
           wx.setStorageSync('cookies', res.cookies)
         }

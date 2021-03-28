@@ -6,6 +6,7 @@
   background-color: #fcfcfc;
   padding: 10rpx
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -46,7 +47,9 @@
 
 .videoArea {
   margin-top: 10rpx;
+  height: calc(100vh - 164rpx);
 }
+
 .videoArea .videoItem {
   box-sizing: border-box;
   margin-top: 30rpx;
@@ -61,17 +64,19 @@
   text-overflow: ellipsis;
   padding: 20rpx 10rpx;
   border-bottom: 2rpx solid #eeeeee
-} 
+}
 
-.videoItem .video {
+.videoItem .common {
   width: 100%;
   border-radius: 10rpx;
 }
+
 .noVideo {
   display: flex;
   justify-content: center;
   margin-top: 30vw;
 }
+
 .noVideo text {
   color: #333333
 }
