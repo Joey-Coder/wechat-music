@@ -7,6 +7,7 @@
   </view>
   <!-- 视频导航 -->
   <scroll-view scroll-into-view="{{'scrollId-' + activeId}}" scroll-with-animation="true" class="nav" enable-flex="true"
+  bindscrolltolower="handleScrollToLower"
     scroll-x="true">
     <view class="navItem {{activeId === item.id ? 'active': ''}}" wx:for="{{navList}}" wx:key="id" data-id="{{item.id}}"
       id="{{'scrollId-' + item.id}}" bindtap="setActiveId">

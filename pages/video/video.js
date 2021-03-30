@@ -160,6 +160,28 @@ Page({
     })
     this.getVideoList(this.data.activeId)
   },
+  /**
+   * 导航栏移动到最右边，追加8个nav
+   * 通过navList复用减少请求
+   */
+  async handleScrollToLower() {
+    if (!this.navList) {
+      let { code, data } = await request(
+        '/video/group/list',
+      )
+      if (code !== 200) {
+        return console.log('获取视频标签失败')
+      }
+      this.navList = data
+    }
+    let { navList } = this.data
+    let l = navList.length
+    navList.push(...(this.navList.slice(l,l+8)))
+    this.setData({
+      navList: navList
+    })
+
+  },
 
 
   /**
