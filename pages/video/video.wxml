@@ -7,23 +7,31 @@
   </view>
   <!-- 视频导航 -->
   <scroll-view scroll-into-view="{{'scrollId-' + activeId}}" scroll-with-animation="true" class="nav" enable-flex="true"
-  bindscrolltolower="handleScrollToLower"
-    scroll-x="true">
+    bindscrolltolower="handleScrollToLower" scroll-x="true">
+
     <view class="navItem {{activeId === item.id ? 'active': ''}}" wx:for="{{navList}}" wx:key="id" data-id="{{item.id}}"
       id="{{'scrollId-' + item.id}}" bindtap="setActiveId">
       {{item.name}}
     </view>
   </scroll-view>
   <!-- 视频区域 -->
-  <scroll-view class="videoArea" scroll-y wx:if="{{videoList.length}}"
-  refresher-enabled
-  refresher-triggered="{{isRefresh}}"
-  bindrefresherrefresh="handleRefreshVideo"
-  >
+  <scroll-view class="videoArea" scroll-y wx:if="{{videoList.length}}" refresher-enabled
+    refresher-triggered="{{isRefresh}}" bindrefresherrefresh="handleRefreshVideo">
+
     <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
+      <view class="info">
+        <button class="iconfont icon-share" open-type="share">
+        </button>
+        <view>
+          <button class="iconfont icon-comment">
+          </button>
+          <mp-badge content="{{item.data.praisedCount}}" ext-class="praised-badge"/>
+          <button class="iconfont icon-like"></button>
+          <mp-badge content="{{item.data.commentCount}}" ext-class="comment-badge"/>
+        </view>
+      </view>
       <video wx:if="{{videoId === item.data.vid}}" class="common" src="{{item.data.urlInfo.url}}" id="{{item.data.vid}}"
-        poster="{{item.data.coverUrl}}" bindtimeupdate="handleTimeUpdate"
-        bindended="handleEnd" autoplay></video>
+        poster="{{item.data.coverUrl}}" bindtimeupdate="handleTimeUpdate" bindended="handleEnd" autoplay></video>
 
       <image wx:else class="common" src="{{item.data.coverUrl}}" id="{{item.data.vid}}" bindtap="handlePlay"></image>
 

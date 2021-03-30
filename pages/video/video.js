@@ -50,6 +50,10 @@ Page({
         item.id = index
         return item
       })
+      for (let i = videoList.length - 1; i >= 0; i--) {
+        let temp = videoList[i].data
+        temp.praisedCount = this.filterCount(temp.praisedCount)
+      }
       this.setData({
         videoList: videoList,
         isRefresh: false
@@ -58,8 +62,26 @@ Page({
       wx.hideLoading({
         success: (res) => { },
       })
+      wx.stopPullDownRefresh({
+        success: (res) => {
+        },
+      })
     }
   },
+
+  /**
+   * 处理点赞，转发等数据
+   * @param {Numer} count 
+   */
+  filterCount(count) {
+    console.log(typeof count)
+    if (count >= 10000) {
+      return (count / 10000).toFixed(1) + 'w'
+    } else {
+      return count
+    }
+  },
+
   /**
    * 记录当前标签，并获取标签视频
    * @param {Object} e 
@@ -176,7 +198,7 @@ Page({
     }
     let { navList } = this.data
     let l = navList.length
-    navList.push(...(this.navList.slice(l,l+8)))
+    navList.push(...(this.navList.slice(l, l + 8)))
     this.setData({
       navList: navList
     })
@@ -223,14 +245,16 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.getNavList()
 
+    // console.log('sdfds')
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    // console.log('bottom')
   },
 
   /**

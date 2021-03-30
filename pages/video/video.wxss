@@ -50,6 +50,52 @@
   height: calc(100vh - 164rpx);
 }
 
+.videoArea .info {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10rpx 0;
+  padding: 0 40rpx 0 10rpx;
+  border-radius: 10rpx;
+  /* width: 100%; */
+}
+
+.info view {
+  display: flex;
+  position: relative;
+}
+
+.info .icon-share,
+.info view .icon-comment,
+.info view .icon-like {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  width: auto;
+  color: #666666
+}
+
+
+.info view .icon-comment {
+  margin-right: 40rpx;
+}
+
+.info view .comment-badge,
+.info view .praised-badge {
+  display: block;
+  position: absolute;
+  /* position: relative; */
+  font-size: 24rpx;
+  top: -20rpx; 
+  left: 5rpx;
+  z-index: 100;
+}
+
+.info view .comment-badge {
+  left: 80%;
+}
+
 .videoArea .videoItem {
   box-sizing: border-box;
   margin-top: 30rpx;
