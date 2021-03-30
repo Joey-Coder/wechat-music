@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/recommend/recommend",
     "pages/video/video",
     "pages/index/index",
     "pages/login/login",
@@ -16,7 +17,8 @@
     "selectedColor": "#d43c33",
     "backgroundColor": "#ffffff",
     "borderStyle": "white",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "/static/images/home.png",
