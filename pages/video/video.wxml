@@ -14,10 +14,16 @@
     </view>
   </scroll-view>
   <!-- 视频区域 -->
-  <scroll-view class="videoArea" scroll-y wx:if="{{videoList.length}}">
+  <scroll-view class="videoArea" scroll-y wx:if="{{videoList.length}}"
+  refresher-enabled
+  refresher-triggered="{{isRefresh}}"
+  bindrefresherrefresh="handleRefreshVideo"
+  >
     <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
-      <video wx:if="{{videoId === item.data.vid}}" class="common" src="{{item.data.urlInfo.url}}"
-        poster="{{item.data.coverUrl}}" autoplay></video>
+      <video wx:if="{{videoId === item.data.vid}}" class="common" src="{{item.data.urlInfo.url}}" id="{{item.data.vid}}"
+        poster="{{item.data.coverUrl}}" bindtimeupdate="handleTimeUpdate"
+        bindended="handleEnd" autoplay></video>
+
       <image wx:else class="common" src="{{item.data.coverUrl}}" id="{{item.data.vid}}" bindtap="handlePlay"></image>
 
       <view class="title">{{item.data.title}}</view>

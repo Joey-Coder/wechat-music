@@ -9,7 +9,11 @@ Page({
     navList: [],
     activeId: null,
     videoList: [{}],
-    videoId: null
+    videoId: null,
+    // 记录视频播发进度
+    videoTimeRecord: [],
+    // 是否显示下拉icon
+    isRefresh: false
   },
 
 
@@ -47,10 +51,12 @@ Page({
         return item
       })
       this.setData({
-        videoList: videoList
+        videoList: videoList,
+        isRefresh: false
+
       })
       wx.hideLoading({
-        success: (res) => {},
+        success: (res) => { },
       })
     }
   },
@@ -79,12 +85,80 @@ Page({
    */
   handlePlay(e) {
     let vid = e.target.id
+    let { videoTimeRecord } = this.data
     // this.lastId !== vid && this.videoContext && this.videoContext.pause()
     this.setData({
       videoId: vid
     })
-    // this.videoContext = wx.createVideoContext(this.data.videoId)
+    this.videoContext = wx.createVideoContext(vid)
+    let temp = videoTimeRecord.find(item => item.vid === vid)
+    if (temp) {
+      console.log('jump to ', temp.currentTime)
+      this.videoContext.seek(temp.currentTime)
+    }
     // this.videoContext.play()
+    // let index = this.data.videoTimeRecord.findIndex(item => item.vid === vid)
+    // if (index !== -1) {
+    //   console.log(index)
+    //   console.log(this.data.videoTimeRecord[index].currentTime)
+    //   this.videoContext.seek(this.data.videoTimeRecord[index].currentTime)
+    // } else {
+    //   this.videoContext.play()
+    // }
+  },
+
+  /**
+   * 监听视频播放进度，并记录视频的当前播放进度
+   * @param {Object} e 
+   * todo: 加个防抖
+   */
+  handleTimeUpdate(e) {
+    // console.log(e)
+    let { videoId } = this.data
+    // 判断当前id是否等于播放视频的id
+    // 避免当不暂停视频，直接播放其他视频时，当前视频的播放进度被设置为-1
+    if (videoId !== e.currentTarget.id) return
+    let temp = { vid: e.currentTarget.id, currentTime: e.detail.currentTime }
+    console.log(temp)
+    let { videoTimeRecord } = this.data
+    // 寻找是否已存在视频播发记录
+    let index = videoTimeRecord.findIndex(item => item.vid === e.target.id)
+    // console.log(temp)
+    if (index !== -1) {
+      // 已经存在，更新
+      videoTimeRecord[index] = temp
+    } else {
+      // 未存在，添加
+      videoTimeRecord.push(temp)
+    }
+    this.setData({
+      videoTimeRecord: videoTimeRecord
+    })
+  },
+
+  /**
+   * 视频播放结束时触发
+   * @param {Object} e 
+   */
+  handleEnd(e) {
+    let { videoTimeRecord } = this.data
+    let index = videoTimeRecord.findIndex(item => item.vid === e.target.id)
+    if (index !== -1) {
+      videoTimeRecord.splice(index, 1)
+    }
+    this.setData({
+      videoTimeRecord: videoTimeRecord
+    })
+  },
+
+  /**
+   * 下拉刷新视频 
+   */
+  handleRefreshVideo() {
+    wx.showLoading({
+      title: '刷新中',
+    })
+    this.getVideoList(this.data.activeId)
   },
 
 
