@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/recommend/recommend",
+    "pages/songDetail/songDetail",
     "pages/video/video",
     "pages/index/index",
     "pages/login/login",
@@ -42,5 +43,6 @@
   "sitemapLocation": "sitemap.json",
   "useExtendedLib": {
     "weui": true
-  }
+  },
+  "requiredBackgroundModes": ["audio"]
 }

@@ -31,12 +31,22 @@ Page({
       'GET',
       { requireLogin: true }
     )
-    console.log(code)
+    // console.log(code)
     if (code == 200) {
       this.setData({
         recommendSongs: recommend
       })
     }
+  },
+
+  /**
+   * 跳转到播放详情页面
+   */
+  toSongDetail(e) {
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/songDetail/songDetail?id='+id
+    })
   },
 
   /**

@@ -1,0 +1,23 @@
+<!--pages/songDetail /songDetail.wxml-->
+<view class="songDetailContainer">
+  <image class="bck" src="/static/images/pexels-philip-warp-6188080.jpg"></image>
+  <!-- <text>sfsdf</text> -->
+  <view class="content">
+    <image src="/static/images/needle.png" class="needle {{isPlay ? 'moveNeedle' :''}}"></image>
+    <view class="posterArea {{isPlay ? 'rotateDisc': ''}}">
+      <image src="/static/images/disc.png" class="disc"></image>
+      <image src="{{songDetail.al.picUrl}}" class="poster"></image>
+    </view>
+    <view class="songInfo">
+      <text class="songName">{{songDetail.name}}</text>
+      <text class="artistName">{{songDetail.ar && songDetail.ar[0].name}}</text>
+    </view>
+    <view class="playTool">
+      <view class="iconfont icon-shangyishoushangyige"></view>
+      <view class="iconfont icon-zanting" wx:if="{{isPlay}}" bindtap="handlePlay"></view>
+      <view class="iconfont icon-play" wx:else bindtap="handlePlay"></view>
+      <view class="iconfont icon-xiayigexiayishou"></view>
+    </view>
+    
+  </view>
+</view>
