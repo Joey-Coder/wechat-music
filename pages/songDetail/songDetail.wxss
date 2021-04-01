@@ -113,6 +113,44 @@
   font-size: unset;
 }
 
+.content .playBar {
+  width: 500rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1rpx solid rgba(255,255,255, .65); */
+  padding: 10rpx;
+  margin-top: 20rpx;
+}
+
+.playBar text {
+  font-size: 30rpx;
+  color: rgba(255,255,255, .65);
+}
+.playBar .totalBar {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: 0 6rpx;
+  height: 6rpx;
+  background-color: rgba(255,255,255, .65);
+  border-radius: 3rpx;
+}
+
+.totalBar .currentBar {
+  /* width: 30%; */
+  height: 100%;
+  background-color: rgb(202, 14, 14, .65);
+}
+
+.totalBar .circle {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 5rpx;
+  background-color: rgb(255, 255, 255);
+  z-index: 20;
+}
+
 .content .playTool {
   display: flex;
   justify-content: space-around;

@@ -1,6 +1,7 @@
 // pages/songDetail /songDetail.js
 import request from '../../utils/request'
 import PubSub from 'pubsub-js'
+import moment from 'moment'
 // 获取全局实例
 var appInstance = getApp()
 
@@ -14,7 +15,10 @@ Page({
     songDetail: {},
     songAddress: '',
     index: 0,
-    songId: ''
+    songId: '',
+    currentTime: '00:00',
+    totalTime:'00:00',
+    currentWidth: 0
   },
   /**
    * 播放/暂停歌曲
@@ -47,7 +51,8 @@ Page({
     )
     if (code === 200) {
       this.setData({
-        songDetail: songs[0]
+        songDetail: songs[0],
+        totalTime: moment(songs[0].dt).format('mm:ss')
       })
     }
   },
@@ -130,18 +135,27 @@ Page({
       this.changeStatus(false)
       appInstance.audioId = ''
     })
+    // 监听音乐播放
+    this.audio.onTimeUpdate(()=>{
+      let current = moment(this.audio.currentTime*1000).format('mm:ss')
+      this.setData({
+        currentTime: current,
+        currentWidth: parseInt(this.audio.currentTime / this.audio.duration * 400)
+      })
+    })
+    
     // 订阅更新的歌曲id,index
     PubSub.subscribe('updateId', async (msg, data) => {
-      console.log(msg, data)
+      // console.log(msg, data)
       let { id, index } = data
       this.setData({
         songId: id,
         index: index
       })
-      await this.initAudio()
       this.setData({
         isPlay: false
       })
+      await this.initAudio()
       this.handlePlay()
 
     })

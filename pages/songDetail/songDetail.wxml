@@ -12,6 +12,14 @@
       <text class="songName">{{songDetail.name}}</text>
       <text class="artistName">{{songDetail.ar && songDetail.ar[0].name}}</text>
     </view>
+    <view class="playBar">
+      <text>{{currentTime}}</text>
+      <view class="totalBar">
+        <view class="currentBar" style="width: {{ currentWidth + 'rpx'}}"></view>
+        <view class="circle"></view>
+      </view>
+      <text>{{totalTime}}</text>
+    </view>
     <view class="playTool">
       <view class="iconfont icon-shangyishoushangyige" bindtap="switchSong" data-type="prev"></view>
       <view class="iconfont icon-zanting" wx:if="{{isPlay}}" bindtap="handlePlay"></view>

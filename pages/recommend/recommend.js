@@ -58,7 +58,7 @@ Page({
     this.getRecommendSongs()
     // 订阅detail页面的切歌事件
     var switchSong = PubSub.subscribe('switchSong', (msg, data) => {
-      console.log(msg, data)
+      // console.log(msg, data)
       let { recommendSongs } = this.data
       let len = recommendSongs.length
       let { type, index } = data

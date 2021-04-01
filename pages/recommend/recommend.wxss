@@ -34,8 +34,9 @@
 .date text {
   font-size: 60rpx;
   font-weight: 600;
-  color: rgba(0,0,0,.65)
+  color: rgba(0, 0, 0, .65)
 }
+
 .date .month {
   font-size: 80rpx;
 }
@@ -46,7 +47,7 @@
   background-color: #fbfbfb;
   /* margin-top: 20rpx; */
   padding: 20rpx 20rpx 0;
-  border-radius: 30rpx 30rpx 0 0 ;
+  border-radius: 30rpx 30rpx 0 0;
 }
 
 .playListArea .toolbar {
@@ -56,17 +57,22 @@
   padding: 20rpx 0;
 }
 
+.playListArea .playList {
+  height: calc(100vh - 300rpx);
+}
+
 .playList .songItem {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   padding: 10rpx 0;
   /* background-color: #fff; */
 }
 
-.songItem .songInfo  {
+.songItem .songInfo {
   display: flex;
 }
+
 .songInfo .poster {
   width: 120rpx;
   height: 120rpx;

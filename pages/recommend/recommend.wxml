@@ -15,7 +15,7 @@
       <text>播放全部</text>
       <text>多选</text>
     </view>
-    <view class="playList">
+    <scroll-view scroll-y class="playList">
       <view class="songItem" wx:for="{{recommendSongs}}" wx:key="id" bindtap="toSongDetail" data-id="{{item.id}}"
         data-index="{{index}}">
         <view class="songInfo">
@@ -27,7 +27,7 @@
         </view>
         <text class="more iconfont icon-gengduo"></text>
       </view>
-    </view>
+    </scroll-view>
   </view>
 
 </view>
