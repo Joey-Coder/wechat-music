@@ -1,0 +1,23 @@
+{
+  "name": "wechat-music",
+  "version": "1.0.0",
+  "description": "基于网易云API开发的音乐微信小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joey-Coder/wechat-music.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Joey-Coder/wechat-music/issues"
+  },
+  "homepage": "https://github.com/Joey-Coder/wechat-music#readme",
+  "dependencies": {
+    "pubsub-js": "^1.9.3"
+  }
+}

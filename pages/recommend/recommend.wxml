@@ -16,7 +16,8 @@
       <text>多选</text>
     </view>
     <view class="playList">
-      <view class="songItem" wx:for="{{recommendSongs}}" wx:key="id" bindtap="toSongDetail" data-id="{{item.id}}">
+      <view class="songItem" wx:for="{{recommendSongs}}" wx:key="id" bindtap="toSongDetail" data-id="{{item.id}}"
+        data-index="{{index}}">
         <view class="songInfo">
           <image class="poster" src="{{item.album.blurPicUrl}}"></image>
           <view>

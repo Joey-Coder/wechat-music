@@ -1,5 +1,6 @@
 // pages/recommend/recommend.js
 import request from '../../utils/request.js'
+import PubSub from 'pubsub-js'
 Page({
 
   /**
@@ -43,9 +44,9 @@ Page({
    * 跳转到播放详情页面
    */
   toSongDetail(e) {
-    let id = e.currentTarget.dataset.id
+    let { index, id } = e.currentTarget.dataset
     wx.navigateTo({
-      url: '/pages/songDetail/songDetail?id='+id
+      url: `/pages/songDetail/songDetail?id=${id}&index=${index}`
     })
   },
 
@@ -55,6 +56,19 @@ Page({
   onLoad: function (options) {
     this.getDate()
     this.getRecommendSongs()
+    // 订阅detail页面的切歌事件
+    var switchSong = PubSub.subscribe('switchSong', (msg, data) => {
+      console.log(msg, data)
+      let { recommendSongs } = this.data
+      let len = recommendSongs.length
+      let { type, index } = data
+      if (type === 'next') {
+        index = (index + len + 1) % len
+      } else {
+        index = (index + len - 1) % len
+      }
+      PubSub.publish('updateId', { id: recommendSongs[index].id, index: index })
+    })
   },
 
   /**

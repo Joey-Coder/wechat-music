@@ -1,5 +1,6 @@
 // pages/songDetail /songDetail.js
 import request from '../../utils/request'
+import PubSub from 'pubsub-js'
 // 获取全局实例
 var appInstance = getApp()
 
@@ -11,7 +12,9 @@ Page({
   data: {
     isPlay: false,
     songDetail: {},
-    songAddress: ''
+    songAddress: '',
+    index: 0,
+    songId: ''
   },
   /**
    * 播放/暂停歌曲
@@ -67,6 +70,20 @@ Page({
     }
   },
 
+  /**
+   * 切歌事件
+   * @param {Object} e 
+   */
+  switchSong(e) {
+    let type = e.currentTarget.dataset.type
+    let { index } = this.data
+    PubSub.publish('switchSong', { type, index })
+  },
+
+  /**
+   * 修改播放状态
+   * @param {Boolean} isPlay 
+   */
   changeStatus(isPlay) {
     this.setData({
       isPlay
@@ -74,31 +91,59 @@ Page({
     appInstance.isPlay = isPlay
   },
   /**
+   * 初识化音乐播放，获取音乐详情，地址等
+   */
+  async initAudio() {
+    let { songId } = this.data
+    await this.getSongDetail(songId)
+    await this.getSongAddress(songId)
+    if (appInstance.isPlay && appInstance.audioId === songId) {
+      // console.log('is Play')
+      this.setData({
+        isPlay: true,
+      })
+    }
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     // 添加一个背景播放控制器
+    let { id, index } = options
     this.audio = wx.getBackgroundAudioManager()
-    this.getSongDetail(options.id)
-    this.getSongAddress(options.id)
-    if (appInstance.isPlay && appInstance.audioId === options.id) {
-      // console.log('is Play')
-      this.setData({
-        isPlay: true
-      })
-    }
+    this.setData({
+      index: index,
+      songId: id
+    })
+    this.initAudio()
+
     this.audio.onPlay(() => {
       // console.log('onPlay')
       this.changeStatus(true)
-      appInstance.audioId = options.id
+      appInstance.audioId = id
     })
     this.audio.onPause(() => {
       // console.log('onPause')
       this.changeStatus(false)
     })
-    this.audio.onStop(()=>{
+    this.audio.onStop(() => {
       this.changeStatus(false)
       appInstance.audioId = ''
+    })
+    // 订阅更新的歌曲id,index
+    PubSub.subscribe('updateId', async (msg, data) => {
+      console.log(msg, data)
+      let { id, index } = data
+      this.setData({
+        songId: id,
+        index: index
+      })
+      await this.initAudio()
+      this.setData({
+        isPlay: false
+      })
+      this.handlePlay()
+
     })
   },
 

@@ -13,11 +13,10 @@
       <text class="artistName">{{songDetail.ar && songDetail.ar[0].name}}</text>
     </view>
     <view class="playTool">
-      <view class="iconfont icon-shangyishoushangyige"></view>
+      <view class="iconfont icon-shangyishoushangyige" bindtap="switchSong" data-type="prev"></view>
       <view class="iconfont icon-zanting" wx:if="{{isPlay}}" bindtap="handlePlay"></view>
       <view class="iconfont icon-play" wx:else bindtap="handlePlay"></view>
-      <view class="iconfont icon-xiayigexiayishou"></view>
+      <view class="iconfont icon-xiayigexiayishou" bindtap="switchSong" data-type="next"></view>
     </view>
-    
   </view>
 </view>
